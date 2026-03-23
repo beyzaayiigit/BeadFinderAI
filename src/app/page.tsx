@@ -195,6 +195,7 @@ export default function Home() {
 
   function resetAll() {
     setFile(null);
+    setPickedMeta(null);
     setError(null);
     setResult(null);
     setStatus("idle");
@@ -320,6 +321,15 @@ export default function Home() {
                   </span>
                 </div>
               )}
+
+              {(status === "success" || status === "non-bracelet") && (
+                <div
+                  className="text-sm text-emerald-700 dark:text-emerald-300"
+                  aria-live="polite"
+                >
+                  Sonuçlar hazır.
+                </div>
+              )}
             </div>
 
             <div className="text-xs text-slate-400 dark:text-violet-300/80">
@@ -414,6 +424,12 @@ export default function Home() {
             </section>
           )}
       </div>
+
+      {(status === "success" || status === "non-bracelet") && (
+        <div className="fixed right-4 bottom-4 z-50 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-medium text-emerald-800 shadow-sm dark:border-emerald-800/60 dark:bg-emerald-950/50 dark:text-emerald-200">
+          ✅ Sonuçlar hazır
+        </div>
+      )}
     </div>
   );
 }
